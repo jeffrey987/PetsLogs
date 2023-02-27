@@ -4,7 +4,7 @@
 		<view class="u-page">
 			<view class="u-demo-block">
 				<u-tabs :list="list2" @click="click2"></u-tabs>
-				<view class="u-demo-block__content" style="margin-top:15px;">
+				<view class="u-demo-block__content" style="margin-top:15px;" >
 					<u-row customStyle="margin-bottom: 10px">
 						<u-col span="4">
 							<u--image src="https://cdn.uviewui.com/uview/album/1.jpg" width="80px" height="80px"
@@ -39,11 +39,15 @@
 			</view>
 		</view>
 		<!-- 重要事项提醒 -->
-		<view>
+		<view class="quick-settings">
 			<u-row>
-				<u-col>
-					<view>重要事项提醒</view>
-					<u--text type="warning" text="快速设置提醒事项"></u--text>
+				<u-col span="2"><u--image src="https://cdn.uviewui.com/uview/album/1.jpg" width="50px" height="50px"></u--image> </u-col>
+				<u-col span="6">
+					<view class="nlock_text">重要事项提醒</view>
+					<view class="nlock_text">重要事项提醒</view>
+				</u-col>
+				<u-col span="4">
+					<u-button type="primary" text="去设置"></u-button>
 				</u-col>
 			</u-row>
 		</view>
@@ -52,19 +56,14 @@
 			<u-list>
 				<u-list-item v-for="(item, index) in indexList" :key="index">
 					<template>
-						<view class="u-demo-block__content">
+						<view class="list-block-content">
 							<view class="petinfo">
-								宠物名称:{{item.pet}}
+								{{item.date}}
 							</view>
 							<view class="album">
-								<view class="album__avatar">
-									<image src="https://v2.h5.uviewui.com/static/uview/common/logo.png" mode=""
-										style="width: 32px;height: 32px;"></image>
-										{{item.date}}
-								</view>
-								<view class="album__content">
-									<u--text :text="item.name" type="primary" bold size="17"></u--text>
-									<u--text margin="0 0 8px 0" :text="item.content"></u--text>
+								<view class="album__title">{{item.title}}</view>
+								<view class="album__content">									
+									<u--text class="album_content_text" :text="item.content"></u--text>
 									<u-album :urls="item.imgs"></u-album>
 								</view>
 							</view>
@@ -84,7 +83,7 @@
 			return {
 				indexList: [{
 					date: "2023-02-14 15:18",
-					name: "name1",
+					title: "title1",
 					pet: "pet",
 					content: "content",
 					imgs: [
@@ -195,4 +194,31 @@
 	}
 
 	.petlogs__title {}
+	.list-block-content{
+		background-color: #ccffcc;
+		margin: 15px;
+		padding: 10px;
+		border-radius: 10px;
+	}
+	.list-block-content .petinfo{
+		font-size: 11px;
+		color: #bfbfbf;
+	}
+	.album{
+	.album__title{
+		color: #17191c;
+		font-size: 15px;
+		font-weight: bold;
+		margin-top: 9px;
+		margin-bottom: 5px;
+	}
+	.album__content{
+		.album_content_text{
+			margin-bottom: 10px !important;
+			}
+		}
+	}
+	.quick-settings{
+		margin:15px;
+	}
 </style>
