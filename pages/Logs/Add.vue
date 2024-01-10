@@ -12,7 +12,9 @@
 			</u-form-item>
 			<u-form-item label="" prop="">
 				<view class="item-text">记录时间:</view>
-				<u--input v-model="model1.petInfo.reminderdate" border="none"></u--input>
+				<view  @click="show = true" >{{model1.petInfo.reminderdate}}</view>
+				<u-calendar :show="show" :mode="mode" @confirm="confirm"></u-calendar>				
+				<!-- 时间选择 -->
 			</u-form-item>
 			<u-form-item label="描述:">
 				<u-textarea v-model="model1.petInfo.content" placeholder="如果你把我拍的很可爱，我可以允许你把他记下来"></u-textarea>
@@ -45,6 +47,8 @@
 			return {
 				tabbar5: 1,
 				showSex: false,
+				show: false,
+				mode: 'single',
 				model1: {
 					userInfo: {
 						name: 'uView UI',
@@ -90,6 +94,11 @@
 			};
 		},
 		methods: {
+			confirm(e) {
+				this.show=false;
+				console.log(e[0]);
+				this.model1.petInfo.reminderdate=e[0]
+			},
 			click1(e) {
 				switch (e) {
 					case 0:
@@ -122,7 +131,7 @@
 		onReady() {
 			//如果需要兼容微信小程序，并且校验规则中含有方法等，只能通过setRules方法设置规则。
 			this.$refs.form1.setRules(this.rules)
-		},
+		}
 	}
 </script>
 

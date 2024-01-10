@@ -1,5 +1,6 @@
 <template>
 	<view>
+		个人介绍
 		<u-tabbar :value="tabbar5" :placeholder="true" :fixed="true" :safeAreaInsetBottom="true">
 			<u-tabbar-item text="首页" icon="home" @click="click1"></u-tabbar-item>
 			<u-tabbar-item text="记录" icon="edit-pen" @click="click1"></u-tabbar-item>
